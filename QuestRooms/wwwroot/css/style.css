@@ -1,0 +1,44 @@
+.logo {
+    position: relative;
+    overflow: hidden;
+}
+.home-button a {
+    text-decoration: none;
+    color:#fff;
+}
+.mask {
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+    opacity: 0.8;
+    font-size: 24px;
+    text-align: center;
+    transition: 0.3s;
+    text-decoration: none;
+    color: #ffffff;
+}
+.logo:hover .mask{
+    bottom: 0;
+    text-decoration: none;
+    color: #ffffff;
+    line-height: 150px;
+}
+.room-logo{
+    margin: 0 auto;
+}
+.room-container {
+    margin-top: 20px;
+}
+.room-container i {
+    color: orange;
+    font-size: 35px;
+}
+.icon {
+    width: 70px;
+}
+.room-att-info {
+    display: flex;
+}

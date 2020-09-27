@@ -1,0 +1,57 @@
+@page "/admin/rooms"
+@page "/admin"
+@inherits OwningComponentBase<IRoomsRepository>
+
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <td />
+            </tr>
+        </thead>
+        <tbody>
+            @if (RoomsData?.Count() > 0) {
+            @foreach (QuestRoom r in RoomsData) {
+            <tr>
+                <td>@r.QuestId</td>
+                <td>@r.Title</td>
+                <td>
+                    <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(r.QuestId)">
+                        Details
+                    </NavLink>
+                    <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(r.QuestId)">
+                        Edit
+                    </NavLink>
+                    <button class="btn btn-danger btn-sm" @onclick="@(e => DeleteRoom(r))">Delete</button>
+                </td>
+            </tr>
+            }
+            } else {
+            <tr>
+                <td colspan="5" class="text-center">No Rooms</td>
+            </tr> }
+        </tbody>
+    </table>
+    <NavLink class="btn btn-primary" href="/admin/rooms/create">Create</NavLink>
+
+
+    @code {
+    public IRoomsRepository Repository => Service; 
+    public IEnumerable<QuestRoom> RoomsData { get; set; }
+        protected async override Task OnInitializedAsync()
+        {
+            await UpdateData();
+        }
+        public async Task UpdateData()
+        {
+            RoomsData = await Repository.Rooms.ToListAsync();
+            //RoomsData = Repository.Rooms.ToList();
+        }
+        public async Task DeleteRoom(QuestRoom r) { 
+            Repository.DeleteRoom(r);
+            await UpdateData();
+        }
+        public string GetDetailsUrl(long id) => $"/admin/rooms/details/{id}";
+        public string GetEditUrl(long id) => $"/admin/rooms/edit/{id}";
+    }

@@ -1,0 +1,60 @@
+@model QuestRoom
+<div class="text-center">
+  <img src="@Model.Logo" class="rounded img-fluid room-logo" alt="@Model.Title">
+</div>
+<div class="room-container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <h6>OVERVIEW</h6>
+            <p>@Model.Description</p>
+        </div>
+        <div class="col-lg-3 col-md-3">
+            <div class="room-info">
+                <div class="room-att-info">
+                    <div class="icon">
+                        <i class="fas fa-door-closed"></i>
+                    </div>
+                    <div class="room-caption">
+                        <h6>DIFFICULTY</h6>
+                        <p>@Model.Difficulty</p>
+                    </div>
+                </div>
+
+                <div class="room-att-info">
+                    <div class="icon">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <div class="room-caption">
+                        <h6>DURATION</h6>
+                        <p>@Model.Duration Mins</p>
+                    </div>
+                </div>
+
+                <div class="room-att-info">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="room-caption">
+                        <h6>GROUP SIZE</h6>
+                        <p>@Model.MinPlayersCount - @Model.MaxPlayersCount participants</p>
+                    </div>
+                </div>
+
+                <div class="room-att-info">
+                    <div class="icon">
+                        <i class="far fa-caret-square-up"></i>
+                    </div>
+                    <div class="room-caption">
+                        <h6>ESCAPE RATE</h6>
+                        <p>@Model.Rating%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

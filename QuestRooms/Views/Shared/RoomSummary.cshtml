@@ -1,0 +1,33 @@
+@model QuestRoom
+
+<div class="card" style="width: 18rem;">
+    <div class="logo">
+        <img src="@Model.Logo" class="card-img-top" alt="@Model.Title">
+        <a href="#" class="mask">
+            <div class="mask-background"></div>
+            <span>
+                <i class="far fa-user"></i>
+                @Model.MinPlayersCount - @Model.MaxPlayersCount
+            </span>
+            <span>
+                <i class="far fa-clock"></i>
+                @Model.Duration min
+            </span>
+            <span>
+                <i class="far fa-caret-square-up"></i>
+                @Model.Rating%
+            </span>
+        </a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Description</p>
+        <a href="@Url.Action("Room", "Home", new {questId = @Model.QuestId})" class="btn btn-outline-warning">READ MORE</a>
+        <!-- <form id="@Model.QuestId" asp-page="/Room" method="post"> <input type="hidden" asp-for="QuestId"/>
+                <button type="submit" class="btn btn-success btn-sm pull-right" style="float:right">
+                    READ MORE
+                </button>
+            </span>
+        </form> -->
+    </div>
+</div>

@@ -1,37 +1,33 @@
-@using QuestRooms.Models
-@model IEnumerable<QuestRoom> 
-@{ Layout = null; }
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width" />
-    <title>QuestRooms</title>
-</head>
-<body> 
-    <ul>
-        @foreach (QuestRoom r in Model) 
-        {
-            <li>Title: @r.Title</li>
-            <li>Description: @r.Description</li>
-            <li>Duration: @r.Duration</li>
-            <li>MinPlayersCount: @r.MinPlayersCount</li>
-            <li>MaxPlayersCount: @r.MaxPlayersCount</li>
-            <li>MinAgeOfPlayers: @r.MinAgeOfPlayers</li>
-            <li>Adress: @r.Adress</li>
-            <li>PhoneNumbers: 
-                @foreach (string n in r.PhoneNumbers) { 
-                    <span>@n </span>
-                }
-            </li>
-            <li>Email: @r.Email</li>
-            <li>Company: @r.Company</li>
-            <li>Rating: @r.Rating</li>
-            <li>FearRating: @r.FearRating</li>
-            <li>Difficulty: @r.Difficulty</li>
-            <li>Logo: @r.Logo</li>
-            <li>Galerry: @r.Galerry</li>
-            <hr>
+@model RoomsListViewModel
+<ul>
+    <div class="card-deck">
+    @foreach (QuestRoom r in Model.Rooms) {
+        <partial name="RoomSummary" model="r"/>
+    }
+    </div>
+</ul>
+<div page-model="@Model.PagingInfo" page-action="Index"></div>
+
+
+
+
+@* <li>Title: @r.Title</li>
+    <li>Description: @r.Description</li>
+    <li>Duration: @r.Duration</li>
+    <li>MinPlayersCount: @r.MinPlayersCount</li>
+    <li>MaxPlayersCount: @r.MaxPlayersCount</li>
+    <li>MinAgeOfPlayers: @r.MinAgeOfPlayers</li>
+    <li>Adress: @r.Adress</li>
+    <li>PhoneNumbers:
+        @foreach (string n in r.PhoneNumbers) {
+        <span>@n </span>
         }
-    </ul>
-</body>
-</html>
+    </li>
+    <li>Email: @r.Email</li>
+    <li>Company: @r.Company</li>
+    <li>Rating: @r.Rating</li>
+    <li>FearRating: @r.FearRating</li>
+    <li>Difficulty: @r.Difficulty</li>
+    <li>Logo: @r.Logo</li>
+    <li>Galerry: @r.Galerry</li>
+    <hr> *@

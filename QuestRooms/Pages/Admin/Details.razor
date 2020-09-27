@@ -1,0 +1,86 @@
+@page "/admin/rooms/details/{id:long}"
+<h3 class="bg-info text-white text-center p-1">Details</h3>
+<table class="table table-sm table-bordered table-striped">
+    <tbody>
+        <tr>
+            <th>ID</th>
+            <td>@Room.QuestId</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>@Room.Title</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>@Room.Description</td>
+        </tr>
+        <tr>
+            <th>Duration</th>
+            <td>@Room.Duration</td>
+        </tr>
+        <tr>
+            <th>MinPlayersCount</th>
+            <td>@Room.MinPlayersCount</td>
+        </tr>
+        <tr>
+            <th>MaxPlayersCount</th>
+            <td>@Room.MaxPlayersCount</td>
+        </tr>
+        <tr>
+            <th>MinAgeOfPlayers</th>
+            <td>@Room.MinAgeOfPlayers</td>
+        </tr>
+        <tr>
+            <th>Adress</th>
+            <td>@Room.Adress</td>
+        </tr>
+        <tr>
+            <th>PhoneNumbers</th>
+            <td>
+                @Room.PhoneNumbers
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Room.Email</td>
+        </tr>
+        <tr>
+            <th>Company</th>
+            <td>@Room.Company</td>
+        </tr>
+        <tr>
+            <th>Rating</th>
+            <td>@Room.Rating</td>
+        </tr>
+        <tr>
+            <th>FearRating</th>
+            <td>@Room.FearRating</td>
+        </tr>   
+        <tr>
+            <th>Difficulty</th>
+            <td>@Room.Difficulty</td>
+        </tr>   
+        <tr>
+            <th>Logo</th>
+            <td>@Room.Logo</td>
+        </tr>  
+        <tr>
+            <th>Galerry</th>
+            <td>@Room.Galerry</td>
+        </tr>
+    </tbody>
+</table>
+<NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/rooms">Back</NavLink>
+@code {
+[Inject]
+public IRoomsRepository Repository { get; set; }
+[Parameter]
+public long Id { get; set; }
+public QuestRoom Room { get; set; }
+protected override void OnParametersSet()
+{
+Room = Repository.Rooms.FirstOrDefault(r => r.QuestId == Id);
+}
+public string EditUrl => $"/admin/rooms/edit/{Room.QuestId}";
+}
